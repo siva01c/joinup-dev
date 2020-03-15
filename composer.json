@@ -79,6 +79,7 @@
         "ec-europa/infra": "dev-master",
         "ec-europa/joinup-tallinn-dashboard": "dev-master",
         "ec-europa/material-design-lite": "dev-joinup",
+        "ec-europa/toolkit": "dev-release/4.x",
         "ec-europa/virtuoso": "^2.1",
         "jacklmoore/autosize": "dev-master",
         "masterminds/html5": "^2.7",
