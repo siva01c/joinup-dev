@@ -26,6 +26,7 @@ Feature: User authentication
       | admin/config                                                   |
       | admin/config/search/redirect                                   |
       | admin/content                                                  |
+      | admin/content/media                                            |
       | admin/content/rdf                                              |
       | admin/legal-notice                                             |
       | admin/legal-notice/add                                         |
@@ -36,10 +37,18 @@ Feature: User authentication
       | admin/reporting/solutions-by-licences                          |
       | admin/reporting/solutions-by-type                              |
       | admin/structure                                                |
+      | admin/structure/media                                          |
       | admin/structure/views                                          |
       | dashboard                                                      |
       | licence                                                        |
       | licence/add                                                    |
+      | media/add                                                      |
+      | media/add/collection_banner                                    |
+      | media/add/collection_logo                                      |
+      | media/add/solution_banner                                      |
+      | media/add/solution_logo                                        |
+      | media/add/event_logo                                           |
+      | media/add/news_logo                                            |
       | node                                                           |
       | node/add                                                       |
       | node/add/custom_page                                           |
@@ -82,6 +91,7 @@ Feature: User authentication
       | admin                                                          |
       | admin/config                                                   |
       | admin/content                                                  |
+      | admin/content/media                                            |
       | admin/content/rdf                                              |
       | admin/legal-notice                                             |
       | admin/legal-notice/add                                         |
@@ -92,11 +102,19 @@ Feature: User authentication
       | admin/reporting/solutions-by-licences                          |
       | admin/reporting/solutions-by-type                              |
       | admin/structure                                                |
+      | admin/structure/media                                          |
       | admin/structure/views                                          |
       | dashboard                                                      |
       | propose/solution                                               |
       | licence                                                        |
       | licence/add                                                    |
+      | media/add                                                      |
+      | media/add/collection_banner                                    |
+      | media/add/collection_logo                                      |
+      | media/add/solution_banner                                      |
+      | media/add/solution_logo                                        |
+      | media/add/event_logo                                           |
+      | media/add/news_logo                                            |
       | node                                                           |
       | node/add                                                       |
       | node/add/custom_page                                           |
@@ -122,6 +140,7 @@ Feature: User authentication
       | path                                                           |
       | admin/people                                                   |
       | admin/content/rdf                                              |
+      | admin/content/media                                            |
       | admin/legal-notice                                             |
       | admin/legal-notice/add                                         |
       | admin/reporting/export-user-list                               |
@@ -132,6 +151,13 @@ Feature: User authentication
       | dashboard                                                      |
       | licence                                                        |
       | licence/add                                                    |
+      | media/add                                                      |
+      | media/add/collection_banner                                    |
+      | media/add/collection_logo                                      |
+      | media/add/solution_banner                                      |
+      | media/add/solution_logo                                        |
+      | media/add/event_logo                                           |
+      | media/add/news_logo                                            |
       | propose/collection                                             |
 
   @api
@@ -148,6 +174,7 @@ Feature: User authentication
       | admin/content                      |
       | admin/structure                    |
       | admin/structure/views              |
+      | admin/structure/media              |
       | propose/solution                   |
       | node                               |
       | node/add                           |
@@ -186,6 +213,7 @@ Feature: User authentication
       | admin                              |
       | admin/config                       |
       | admin/content                      |
+      | admin/content/media                |
       | admin/content/rdf                  |
       | admin/legal-notice                 |
       | admin/legal-notice/add             |
