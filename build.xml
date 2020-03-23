@@ -12,6 +12,7 @@
     <import file="${project.basedir}/build.dist.xml" />
 
     <!-- Import build properties. -->
+    <property file="build.properties.env" />
     <property file="build.properties.local" />
     <property file="build.properties" />
     <property file="build.properties.dist" />
