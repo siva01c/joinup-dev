@@ -40,10 +40,6 @@
         </properties>
     </rule>
 
-    <!-- Require the strict types declaration in every PHP file. -->
-    <rule ref="SlevomatCodingStandard.TypeHints.NullableTypeForNullDefaultValue">
-    </rule>
-
     <!-- Forbid annotations which are not included in the Drupal coding standard but are often added by IDEs. -->
     <rule ref="SlevomatCodingStandard.Commenting.ForbiddenAnnotations">
         <properties>
