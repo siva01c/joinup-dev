@@ -311,7 +311,7 @@ class ExportUserListForm extends FormBase {
    *   information from Search API.
    */
   protected function getIsAuthor(UserInterface $user): bool {
-    return !empty($this->entityAuthorshipHelper->getEntityIdsAuthoredByUser($user->id(), ['published']));
+    return !empty($this->entityAuthorshipHelper->getEntityIdsAuthoredByUser($user->id()));
   }
 
   /**

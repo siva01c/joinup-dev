@@ -32,16 +32,14 @@ trait SearchTrait {
    */
   protected function commitSearchIndex(): void {
     $storage = \Drupal::entityTypeManager()->getStorage('search_api_index');
-    foreach (['published', 'unpublished'] as $index_id) {
-      $index = $storage->load($index_id);
-      $server = $index->getServerInstance();
-      $backend = $server->getBackend();
-      /** @var \Drupal\search_api_solr\SolrConnectorInterface $connector */
-      $connector = $backend->getSolrConnector();
-      $update = $connector->getUpdateQuery();
-      $update->addCommit(TRUE, TRUE, TRUE);
-      $connector->update($update);
-    }
+    $index = $storage->load('published');
+    $server = $index->getServerInstance();
+    $backend = $server->getBackend();
+    /** @var \Drupal\search_api_solr\SolrConnectorInterface $connector */
+    $connector = $backend->getSolrConnector();
+    $update = $connector->getUpdateQuery();
+    $update->addCommit(TRUE, TRUE, TRUE);
+    $connector->update($update);
   }
 
 }

@@ -48,6 +48,13 @@ name: 'Published entities index'
 description: ''
 read_only: false
 field_settings:
+  aggregated_field:
+    label: 'Aggregated field'
+    property_path: aggregated_field
+    type: string
+    configuration:
+      type: union
+      fields: {  }
   body:
     label: 'Body » Processed text'
     datasource_id: 'entity:node'
@@ -280,6 +287,7 @@ field_settings:
     type: integer
     dependencies:
       module:
+        - meta_entity
         - meta_entity
       config:
         - field.storage.meta_entity.count

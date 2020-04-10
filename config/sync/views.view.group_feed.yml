@@ -9,6 +9,7 @@ dependencies:
     - rdf_entity.rdfentity.solution
     - search_api.index.published
   module:
+    - joinup_group
     - joinup_search
     - search_api
     - smart_trim
@@ -1592,6 +1593,44 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: search_api_string
+        published:
+          id: published
+          table: search_api_index_published
+          field: published
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: '1'
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: search_api_boolean
       sorts:
         entity_created:
           id: entity_created
@@ -1664,6 +1703,7 @@ display:
         operator: AND
         groups:
           1: OR
+          2: AND
     cache_metadata:
       max-age: -1
       contexts:
@@ -1671,11 +1711,13 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
+        - 'user.node_grants:view'
         - user.permissions
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.rdf_entity.field_is_description'
+        - 'config:search_api.index.published'
+        - 'search_api_list:published'
   rss_feed:
     display_plugin: feed
     id: rss_feed
@@ -1711,8 +1753,10 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - user
+        - 'user.node_grants:view'
         - user.permissions
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.rdf_entity.field_is_description'
+        - 'config:search_api.index.published'
+        - 'search_api_list:published'

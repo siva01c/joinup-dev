@@ -34,25 +34,21 @@ class EntityAuthorshipHelper implements EntityAuthorshipHelperInterface {
   /**
    * {@inheritdoc}
    */
-  public function getEntityIdsAuthoredByUser($user_id, array $publication_states = ['published']): array {
-    assert(empty(array_diff($publication_states, ['published', 'unpublished'])), 'Valid publication states are "published" and "unpublished".');
-
+  public function getEntityIdsAuthoredByUser($user_id): array {
     $entity_ids = [];
-    foreach ($publication_states as $publication_state) {
-      // Published and unpublished content are stored in separate indexes.
-      $index = $this->getSearchIndex($publication_state);
-      $query = $index->query();
-      $query->addCondition('entity_author', $user_id);
-      $results = $query->execute();
+    // Published and unpublished content are stored in separate indexes.
+    $index = $this->getSearchIndex('published');
+    $query = $index->query();
+    $query->addCondition('entity_author', $user_id);
+    $results = $query->execute();
 
-      foreach ($results->getResultItems() as $result) {
-        // Prune out the entity type and ID from the Search API combined ID.
-        list($datasource_id, $raw_id) = Utility::splitCombinedId($result->getId());
-        $datasource = $index->getDatasource($datasource_id);
-        $entity_type_id = $datasource->getEntityTypeId();
-        list($entity_id,) = explode(':', $raw_id);
-        $entity_ids[$entity_type_id][$entity_id] = $entity_id;
-      }
+    foreach ($results->getResultItems() as $result) {
+      // Prune out the entity type and ID from the Search API combined ID.
+      list($datasource_id, $raw_id) = Utility::splitCombinedId($result->getId());
+      $datasource = $index->getDatasource($datasource_id);
+      $entity_type_id = $datasource->getEntityTypeId();
+      list($entity_id,) = explode(':', $raw_id);
+      $entity_ids[$entity_type_id][$entity_id] = $entity_id;
     }
 
     return $entity_ids;

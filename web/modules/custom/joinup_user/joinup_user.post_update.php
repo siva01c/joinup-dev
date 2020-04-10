@@ -102,7 +102,7 @@ function joinup_user_post_update_spam_accounts(array &$sandbox): ?string {
   // @todo Find out why blocked users are indexed in 'unpublished' index and, if
   // case, remove and avoid indexing them.
   // @see https://webgate.ec.europa.eu/CITnet/jira/browse/ISAICP-5296
-  Index::load('unpublished')->trackItemsDeleted(
+  Index::load('published')->trackItemsDeleted(
     'entity:user',
     array_map(function (string $uid): string {
       return "$uid:en";

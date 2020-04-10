@@ -1134,3 +1134,34 @@ function joinup_core_post_update_delete_orphaned_solutions() {
     $solution->delete();
   }
 }
+
+/**
+ * Fix fields with erroneous multiple values.
+ */
+function joinup_core_post_update_single_value_field(): void {
+  /** @var \Drupal\sparql_entity_storage\Database\Driver\sparql\ConnectionInterface $sparql */
+  $sparql = \Drupal::service('sparql.endpoint');
+  $graph = 'http://joinup.eu/asset_release/published';
+  $id = 'http://data.europa.eu/w21/0d441e6f-a4a0-4b3b-ba2e-eb31bce43938';
+  $predicate = 'http://purl.org/dc/terms/modified';
+
+  // Pick up the oldest triple.
+  $query = <<<SPARQL
+SELECT ?value WHERE { GRAPH <{$graph}> { <{$id}> <{$predicate}> ?value . } }
+ORDER BY (?value)
+LIMIT 1
+SPARQL;
+  $results = $sparql->query($query);
+  $result = reset($results);
+  $value = (string) $result->value;
+
+  $query = <<<SPARQL
+WITH <{$graph}>
+DELETE { <{$id}> <{$predicate}> ?value } 
+WHERE {
+  <{$id}> <{$predicate}> ?value .
+  VALUES ?value { "{$value}"^^xsd:dateTime } .
+}
+SPARQL;
+  $sparql->query($query);
+}

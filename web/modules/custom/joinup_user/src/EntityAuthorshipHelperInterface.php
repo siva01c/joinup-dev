@@ -14,16 +14,13 @@ interface EntityAuthorshipHelperInterface {
    *
    * @param int|string $user_id
    *   The ID of the user that is the author of the entities.
-   * @param string[] $publication_states
-   *   An array of publication states for the entities. Can contain the values
-   *   'published' and 'unpublished'.
    *
    * @return array
    *   An associative array of entity IDs, keyed by entity type ID.
    *
    * @throws \Drupal\search_api\SearchApiException
-   *   Thrown if an error occurred during the search.
+   *    Thrown if an error occurred during the search.
    */
-  public function getEntityIdsAuthoredByUser($user_id, array $publication_states = ['published']): array;
+  public function getEntityIdsAuthoredByUser($user_id): array;
 
 }

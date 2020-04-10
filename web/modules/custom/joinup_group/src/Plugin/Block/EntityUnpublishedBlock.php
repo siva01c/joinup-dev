@@ -157,9 +157,10 @@ class EntityUnpublishedBlock extends BlockBase implements ContainerFactoryPlugin
    *   Thrown when a problem occurs during execution of the search query.
    */
   protected function getRows(RdfInterface $group): array {
-    $index = $this->entityTypeManager->getStorage('search_api_index')->load('unpublished');
+    $index = $this->entityTypeManager->getStorage('search_api_index')->load('published');
     /** @var \Drupal\search_api\Query\QueryInterface $query */
     $query = $index->query();
+    $query->addCondition('published', FALSE);
     $query->addCondition('entity_bundle', self::COMMUNITY_BUNDLES, 'IN');
     $query->addCondition('entity_groups', $group->id());
     $query->sort('entity_created', 'DESC');

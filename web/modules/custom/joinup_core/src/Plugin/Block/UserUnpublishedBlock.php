@@ -132,9 +132,10 @@ class UserUnpublishedBlock extends BlockBase implements ContainerFactoryPluginIn
    *   An array of rows to render.
    */
   protected function getRows() {
-    $index = $this->entityTypeManager->getStorage('search_api_index')->load('unpublished');
+    $index = $this->entityTypeManager->getStorage('search_api_index')->load('published');
     /** @var \Drupal\search_api\Query\QueryInterface $query */
     $query = $index->query();
+    $query->addCondition('published', FALSE);
     $query->addCondition('entity_author', [$this->currentUser->id()], 'IN');
     $results = $query->execute();
     $entities = $this->getResultEntities($results);
