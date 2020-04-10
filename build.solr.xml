@@ -151,7 +151,7 @@
 ${line.separator}$config['search_api.server.solr_published']['backend_config']['connector_config']['host'] = '${solr.core.published.host}';
 ${line.separator}$config['search_api.server.solr_published']['backend_config']['connector_config']['port'] = '${solr.core.published.port}';
 ${line.separator}$config['search_api.server.solr_published']['backend_config']['connector_config']['path'] = '${solr.core.published.path}';
-${line.separator}$config['search_api.server.solr_published']['backend_config']['connector_config']['core'] = '${solr.core.published.name}';
+${line.separator}$config['search_api.server.solr_published']['backend_config']['connector_config']['core'] = '${solr.core.published.name}';${line.separator}"/>
     </target>
 
     <target
